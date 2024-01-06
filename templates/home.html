@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="jumbotron text-center">
+    <h1>Blogz</h1>
+    <p class="lead">Welcome to my "Blogz" project, such as prescribed by the higher
+        teaching authority during the first ever Launch Code in Memphis, TN <strong>2019</strong>
+        and beyond!
+    </p>
+</div>
+<hr />
+<div class="container">
+    {% if blogs|length == 0 %}
+        <p>No entries yet</p>
+    {% else %}
+        <ul>
+            {% for blog in blogs %}
+            <li><a href="blog/{{blog.id}}"><strong>{{blog.title}}</strong></a> 
+            <p><small>Written by <a href="user/{{blog.user_name}}">{{blog.user_name}}</a> on {{blog.pub_date}}</small></p>
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}
